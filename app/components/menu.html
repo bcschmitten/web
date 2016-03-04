@@ -1,0 +1,12 @@
+﻿<div ng-repeat="menu in vm.menus">
+  <md-button aria-label="{{menu.states[0].menuName}}" ng-click="vm.navigateTo(menu.states[0])" ng-if="menu.states.length == 1">{{menu.states[0].menuName}}</md-button>
+
+  <md-menu ng-if="menu.states.length > 1">
+    <md-button aria-label="{{menu.name}}" ng-click="$mdOpenMenu()">{{menu.name}}</md-button>
+    <md-menu-content>
+      <md-menu-item ng-repeat="state in menu.states">
+        <md-button ng-click="vm.navigateTo(state)">{{state.menuName}}</md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+</div>

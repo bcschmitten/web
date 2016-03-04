@@ -1,0 +1,51 @@
+<!--<?php
+  include_once('config.php');
+
+  // Connecting, selecting database
+  $link = mysql_connect($DB_SERVER, $DB_USERNAME, $DB_PASSWORD) or die('Could not connect: ' . mysql_error());
+  mysql_select_db($DB_DATABASENAME) or die('Could not select database');
+
+  // Performing SQL query
+  $query = "SELECT title, body, dateFrom FROM web_article WHERE dateFrom <= curdate() AND dateTo >= curdate() ORDER BY dateFrom desc LIMIT 3";
+  $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+
+  $rows = array();
+  while ($line = mysql_fetch_array($result, MYSQL_ASSOC))
+    array_push($rows, $line);
+
+  // Closing connection
+  mysql_free_result($result);
+  mysql_close($link);
+
+?>
+
+<?php if (count($rows) > 0) { ?>
+
+<div class="page-header">
+  <h1>News</h1>
+</div>
+
+<?php
+  foreach ($rows as $line)
+  {
+    $row = sprintf("<h3>%s <small> %s</small></h3>", utf8_encode($line[title]), strftime("%d.%m.%Y", strtotime($line[dateFrom])));
+    $row .= sprintf("<p class=\"text-justify\">%s</p>", utf8_encode($line[body]));
+    $row .= "<hr />\n";
+    print($row);
+  }
+?>
+
+<?php } else { ?>-->
+<h1>Herzlich Willkommen</h1>
+<p>
+  Es freut uns, dass Sie den Weg auf die Homepage des Badminton Club Schmitten gefunden haben. Der Badminton Club Schmitten besteht aus knapp 100 Mitgliedern und versucht Sport und Freude zu kombinieren. Mit einer sehr grossen Juniorenabteilung versuchen wir auch den jüngsten der Gemeinde eine attraktive Beschäftigung bieten zu können.
+</p>
+<p>
+  Sollten Sie selber gerne Badminton spielen, dann melden Sie sich doch einfach bei uns. Gerne schauen wir in welcher Trainingsgruppe Sie mitspielen können. Auf alle Fälle würde es uns freuen Sie schon bald bei uns begrüssen zu dürfen.
+</p>
+<p>
+  Hoffentlich bis bald,
+</p>
+<p>
+  Ihr BC Schmitten
+</p>

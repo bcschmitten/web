@@ -1,0 +1,38 @@
+﻿<div layout="column">
+  <md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+      <div class="md-button md-icon-button" style="cursor:default">
+        <md-icon>&#xE88A;</md-icon>
+      </div>
+      <h1>Rogest ImmoCockpit</h1>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+
+  <md-content layout-padding flex>
+    <md-list>
+      <div ng-repeat="section in vm.sections">
+        <md-subheader ng-if="section.name">{{section.name | translate}}</md-subheader>
+        <md-list-item ng-class="{'selected': menuItem.isCurrent()}" ng-repeat="menuItem in section.menuItems" ng-click="menuItem.action()">
+          <md-icon ng-if="menuItem.icon" ng-bind-html="menuItem.icon"></md-icon>
+          <p> {{menuItem.name | translate}} </p>
+        </md-list-item>
+        <md-divider></md-divider>
+      </div>
+
+      <md-list-item>
+        <md-menu style="width:100%;">
+          <md-button style="width:100%; text-align:left; text-transform:none;" aria-label="menu" ng-click="$mdOpenMenu($event)">
+            <md-icon style="margin-right:32px;">&#xE7FD;</md-icon>{{vm.userDisplayName()}}
+          </md-button>
+          <md-menu-content>
+            <md-menu-item class="align-left">
+              <md-button ng-click="vm.logout()">{{'lbl.signout' | translate}}</md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+        <md-divider></md-divider>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</div>

@@ -1,0 +1,78 @@
+<div ng-controller="VorstandController as vm">
+  <div class="page-header">
+    <h1>Vorstand</h1>
+  </div>
+
+  <p class="text-center">
+    <img src="seiten/vorstand/vorstand.jpg" class="img-thumbnail" />
+  </p>
+  <table class="table">
+    <tbody>
+      <tr ng-repeat="rc in vm.roleContacts">
+        <td>{{rc.role.Name}}</td>
+        <td>
+          <div ng-repeat="c in rc.contacts">
+            {{c.Firstname}} {{c.Lastname}}
+          </div>
+        </td>
+      </tr>
+
+      <?php
+      foreach ($rolesRows as $role => $rows)
+      {
+      foreach ($rows as $line)
+      {
+      $row = "
+      <tr>
+        \n";
+        $row .= sprintf("
+        <td><b>%s</b></td>\n", utf8_encode($line[name]));
+
+        $row .= "
+        <td>
+          <div class=\"row\">
+            ";
+            $row .= sprintf("<div class=\"col-xs-12 col-sm-6\"><address><b>%s %s</b><br />%s<br />%s %s</address></div>\n", utf8_encode($line[lastname]), utf8_encode($line[firstname]), utf8_encode($line[street]), utf8_encode($line[zip]), utf8_encode($line[location]));
+            $row .= "<div class=\"col-xs-12 col-sm-6\">
+              ";
+
+              if (!empty($line[phonePrivate]))
+              {
+              $glyph = "<abbr title='Privat'><i class='fa fa-phone fa-lg' style='width:24px'></i></abbr>";
+              $value = $line[phonePrivate];
+              $row .= sprintf("<div class=\"visible-xs hidden-print\">%s <a href=\"tel:%s\">%s</a></div>", $glyph, $value, $value);     // for small screens
+              $row .= sprintf("<div class=\"hidden-xs hidden-print\">%s %s</div>", $glyph, $value);                                     // for medium to big screens
+              $row .= sprintf("<div class=\"visible-print\">%s %s</div>", $glyph, $value);                                              // for printing only
+              }
+
+              if (!empty($line[phoneCell]))
+              {
+              $glyph = "<abbr title='Natel'><i class='fa fa-mobile fa-lg' style='width:24px'></i></abbr>";
+              $value = $line[phoneCell];
+              $row .= sprintf("<div class=\"visible-xs hidden-print\">%s <a href=\"tel:%s\">%s</a></div>", $glyph, $value, $value);     // for small screens
+              $row .= sprintf("<div class=\"hidden-xs hidden-print\">%s %s</div>", $glyph, $value);                                     // for medium to big screens
+              $row .= sprintf("<div class=\"visible-print\">%s %s</div>", $glyph, $value);                                              // for printing only
+              }
+
+              $eMail = (empty($line[eMailAlias])) ? $line[eMail] : $line[eMailAlias];
+              list($mailName, $mailDomain) = split('@', $eMail);
+              if (!empty($eMail))
+              {
+              $glyph = "<abbr title='e-Mail'><i class='fa fa-envelope' style='width:24px'></i></abbr>";
+              $row .= sprintf("<div class=\"hidden-print\">%s <a onclick=\"javascript:SendEMail('%s', '%s' );\" href=\"#\">e-Mail</a></div>", $glyph, $mailDomain, $mailName);  // for all screens
+              }
+
+              $row .= "
+            </div>
+          </div>
+        </td>\n";
+        $row .= "
+      </tr>\n";
+
+      print($row);
+      }
+      }
+      ?>
+    </tbody>
+  </table>
+</div>

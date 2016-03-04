@@ -1,0 +1,44 @@
+﻿<div style="min-height:100%;" flex layout="row" ng-controller="LayoutController as vm">
+  <link rel="stylesheet" href="app/layouts/layout.default.css" />
+
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2 content" md-component-id="MenuLeft" ng-if="!$mdMedia('gt-sm')">
+    <md-toolbar class="md-menu-toolbar" md-whiteframe="1">
+      <div class="md-toolbar-tools">
+        <a style="height:100%" href="#"><img src="app/assets/bcs_logo.jpg" style="max-height:100%;" alt="logo" /></a>
+      </div>
+    </md-toolbar>
+    <md-content class="content" flex layout-padding>
+      <menu orientation="vertical" layout="column"></menu>
+    </md-content>
+  </md-sidenav>
+
+  <div flex layout="column">
+    <header></header>
+
+    <div class="content" flex layout="row">
+      <div style="width:62px; margin:40px 0px; overflow-y:hidden;" class="hide-xs hide-sm" layout="row">
+        <!--<svg flex>
+          <line x1="16" y1="0" x2="16" y2="1000" style="stroke:#2f2683; stroke-width:2px; stroke-linecap:round;" />
+          <line x1="24" y1="2" x2="24" y2="1000" style="stroke:#e00511; stroke-width:2px; stroke-linecap:round; stroke-dasharray: 16px,20px" />
+          <line x1="30" y1="5" x2="30" y2="1000" style="stroke:#e00511; stroke-width:2px; stroke-linecap:round; stroke-dasharray: 16px,20px" />
+        </svg>-->
+      </div>
+
+      <md-content flex layout-padding style="background-color:transparent;">
+        <div flex layout="row" layout-xs="column" layout-sm="column">
+          <ui-view flex></ui-view>
+
+          <div class="layout-content-spacer"></div>
+
+          <div flex="20" flex-xs="100" flex-sm="100">
+            <training-news></training-news>
+            <tournament-info></tournament-info>
+            <galery-mini hide-xs hide-sm></galery-mini>
+          </div>
+        </div>
+      </md-content>
+    </div>
+
+    <footer></footer>
+  </div>
+</div>

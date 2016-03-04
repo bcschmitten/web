@@ -1,0 +1,42 @@
+﻿md-content.md-default-theme, md-content, .md-button {
+    color: #333;
+}
+
+
+.footer {
+    background-color: #222;
+    color: #9d9d9d;
+}
+
+    .footer md-input-container.md-default-theme > md-icon, .footer md-input-container > md-icon,
+    .footer md-input-container.md-default-theme .md-input, .footer md-input-container .md-input {
+        color: #9d9d9d;
+    }
+
+    .footer md-input-container.md-default-theme .md-input, .footer md-input-container .md-input {
+        border-color: #9d9d9d;
+    }
+
+
+.content {
+    background-color: #f1f1f1;
+}
+
+
+a.md-button.md-default-theme.md-fab, a.md-button.md-fab, .md-button.md-default-theme.md-fab, .md-button.md-fab {
+    background-color: #302784;
+}
+
+
+.layout-content-spacer {
+    height: 100%;
+    width: 60px;
+}
+
+@media (max-width: 959px) {
+
+    .layout-content-spacer {
+        height: 60px;
+        width: 100%;
+    }
+}

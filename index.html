@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <title>Badminton Club Schmitten</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="lib/angular-material/angular-material.min.css" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="app/global.css" />
+
+  <script src="lib/angularjs/angular.js"></script>
+  <script src="lib/angularjs/angular-animate.min.js"></script>
+  <script src="lib/angularjs/angular-aria.min.js"></script>
+  <script src="lib/angular-material/angular-material.min.js"></script>
+  <script src="lib/angular-ui-router/angular-ui-router.min.js"></script>
+
+  <script src="app/app.js"></script>
+  <script src="app/components/footer.js"></script>
+  <script src="app/components/header.js"></script>
+  <script src="app/components/galery-mini.js"></script>
+  <script src="app/components/menu.js"></script>
+  <script src="app/components/search.js"></script>
+  <script src="app/components/training-news.js"></script>
+  <script src="app/components/tournament-info.js"></script>
+  <script src="app/layouts/layout.js"></script>
+  <script src="app/pages/steckbrief.js"></script>
+  <script src="app/pages/vorstand.js"></script>
+  <script src="app/services/dataContext.js"></script>
+</head>
+
+<body ng-app="app" style="height:100%;" layout="row" ng-cloak>
+  <ui-view flex layout="row"></ui-view>
+</body>
+</html>

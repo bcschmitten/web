@@ -1,0 +1,23 @@
+a.thumbnail
+{
+    color: inherit;
+    text-decoration: none;
+}
+
+a.thumbnail:hover, a.thumbnail:focus
+{
+    background-color: #EEEEEE;
+    color: #428bca;
+}
+
+
+div.cardName
+{
+    padding-top: 6px;
+}
+
+div.cardSlogan
+{
+    padding-top: 6px;
+    text-align: center;
+}

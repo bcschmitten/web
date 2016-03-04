@@ -1,0 +1,111 @@
+<div ng-controller="SteckbriefController as vm">
+  <div class="page-header">
+    <h1>Steckbrief</h1>
+  </div>
+
+  <div layout="row" layout-wrap>
+    <div flex="50" flex-xs="100">
+      <h3>Adresse</h3>
+      <div layout="row">
+        <address>
+          <div>
+            <b>Badminton Club Schmitten</b><br />
+            z.Hd. {{vm.contactClubAddress.Title}} {{vm.contactClubAddress.Firstname}} {{vm.contactClubAddress.Lastname}}<br />
+            {{vm.contactClubAddress.Street}}<br />
+            {{vm.contactClubAddress.Zip}} {{vm.contactClubAddress.Location}}
+          </div>
+        </address>
+        <div style="padding-left:24px;" layout="column">
+          <md-button class="md-fab md-mini" ng-click="vm.callPhonePrivate(vm.clubAddress)" ng-if="vm.hasClubAddressPhonePrivate">
+            <md-tooltip></md-tooltip>
+            <abbr title='Privat'><md-icon>&#xE0CD;</md-icon></abbr>
+          </md-button>
+          <md-button class="md-fab md-mini" ng-click="vm.sendMail(vm.clubAddress)" ng-if="vm.hasClubAddressMail">
+            <md-tooltip>e-Mail</md-tooltip>
+            <md-icon>&#xE158;</md-icon>
+          </md-button>
+        </div>
+      </div>
+    </div>
+
+    <div flex="50" flex-xs="100">
+      <h3>Mitgliederzahlen</h3>
+      <span ng-if="vm.media('print')">(media: print)</span>
+      <ul>
+        <li>3 Ehrenmitglieder</li>
+        <li>43 Junioren</li>
+        <li>14 Jugendliche</li>
+        <li>33 Erwachsene</li>
+      </ul>
+      <p>Total: 92 Mitglieder</p>
+    </div>
+
+    <div flex="50" flex-xs="100">
+      <h3>Mannschaften</h3>
+      <ul>
+        <li ng-repeat="team in vm.teams | orderBy : 'Name'">{{team.Name}} <small>{{team.LeagueName}}</small></li>
+      </ul>
+    </div>
+
+    <div flex="50" flex-xs="100">
+      <h3>Gr&uuml;ndungsjahr</h3>
+      <p>Der Badminton Club Schmitten wurde im Jahre 1984 gegr&uuml;ndet.</p>
+    </div>
+  </div>
+
+  <h3>Trainer</h3>
+
+  <div>
+    <table class="striped" style="max-width:650px;" ng-if="vm.media('gt-sm')">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Tel. Privat</th>
+          <th>Natel</th>
+          <th>e-Mail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="trainer in vm.contactsTrainer | orderBy : ['Lastname', 'Firstname']">
+          <td>{{trainer.Lastname}} {{trainer.Firstname}}</td>
+          <td>{{trainer.PhonePrivate}}</td>
+          <td>{{trainer.PhoneCell}}</td>
+          <td>
+            <md-button class="md-fab md-mini" ng-click="vm.sendMail(trainer)">
+              <md-tooltip>e-Mail</md-tooltip>
+              <md-icon>&#xE158;</md-icon>
+            </md-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div ng-if="vm.media('xs') || vm.media('sm')">
+      <div ng-repeat="trainer in vm.contactsTrainer | orderBy : ['Lastname', 'Firstname']">
+        <md-divider></md-divider>
+        <div style="padding:6px 0px;" layout="row">
+          <p flex>{{trainer.Lastname}} {{trainer.Firstname}}</p>
+
+          <div style="width:56px;">
+            <md-button class="md-fab md-mini" ng-click="vm.callPhone(trainer.PhonePrivate)" ng-if="trainer.PhonePrivate">
+              <md-tooltip>Privat</md-tooltip>
+              <md-icon>&#xE0CD;</md-icon>
+            </md-button>
+          </div>
+          <div style="width:56px;">
+            <md-button class="md-fab md-mini" ng-click="vm.callPhone(trainer.PhoneCell)" ng-if="trainer.PhoneCell">
+              <md-tooltip>Natel</md-tooltip>
+              <md-icon>&#xE324;</md-icon>
+            </md-button>
+          </div>
+          <div style="width:56px;">
+            <md-button class="md-fab md-mini" ng-click="vm.sendMail(trainer)" ng-if="trainer.EMail || trainer.EMailAlias">
+              <md-tooltip>e-Mail</md-tooltip>
+              <md-icon>&#xE158;</md-icon>
+            </md-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

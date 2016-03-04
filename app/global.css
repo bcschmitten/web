@@ -1,0 +1,58 @@
+﻿ul {
+    padding-left: 17px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    table th {
+        text-align: left;
+    }
+
+    table.striped {
+        width: 100%;
+    }
+
+        table.striped th {
+            border-bottom: solid 2px #ddd;
+        }
+
+        table.striped td {
+            border-bottom: solid 1px #ddd;
+        }
+
+
+.footer {
+    padding: 6px;
+}
+
+
+.widget {
+    background-color: white;
+    border-radius: 2px;
+    margin-bottom: 16px;
+}
+
+    .widget .widget-header {
+        border-radius: 2px 2px 0px 0px;
+        background-color: rgba(0, 0, 0, 0.40);
+        color: white;
+    }
+
+
+.galery-mini {
+    cursor: pointer;
+}
+
+    .galery-mini img {
+        max-width: 100%;
+        margin-bottom: -4px;
+        border-radius: 2px;
+    }
+
+
+.header md-toolbar .md-button {
+    text-transform: none;
+}
